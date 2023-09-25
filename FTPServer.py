@@ -12,7 +12,10 @@ def clientHandeler(cennectionSocket, addr):
       print("from client: " + sentence)
       ServerSentenceList = str(ServerSentence).split(";")
       if (ServerSentenceList[0] == "random"):
-         ServerAwnser = random.randint(int(ServerSentenceList[1]),int(ServerSentenceList[2]) )
+         if (int(ServerSentenceList[1]) > int(ServerSentenceList[2]) ):
+            ServerAwnser = random.randint(int(ServerSentenceList[2]),int(ServerSentenceList[1]) )
+         else:
+            ServerAwnser = random.randint(int(ServerSentenceList[1]),int(ServerSentenceList[2]) )
       elif (ServerSentenceList[0] == "add"):
          ServerAwnser = int(ServerSentenceList[1]) + int(ServerSentenceList[2])
       elif (ServerSentenceList[0] == "subtract"):
