@@ -11,7 +11,10 @@ def clientHandeler(cennectionSocket, addr):
       if (JsonDict == "##close##"):
          break
       if ( str(JsonDict.get('function')) == 'random'):
-         ServerAwnser = random.randint(int(JsonDict['num1']),int(JsonDict['num2']) )
+         if (int(JsonDict['num1']) > int(JsonDict['num2'])):
+           ServerAwnser = random.randint(int(JsonDict['num2']),int(JsonDict['num1']) )
+         else:
+            ServerAwnser = random.randint(int(JsonDict['num1']),int(JsonDict['num2']) )
       elif (str(JsonDict.get('function')) == 'add'):
          ServerAwnser = int(JsonDict['num1']) + int(JsonDict['num2'])
       elif (str(JsonDict.get('function')) == 'subtract'):
